@@ -1,0 +1,49 @@
+<h1 class="mt-5">Agregar producto</h1>
+<hr>
+
+
+<form [formGroup]="form">
+
+  <div class="row g-3 align-items-center mb-4">
+    <div class="col-auto">
+      <label class="col-form-label">Nombre</label>
+    </div>
+
+    <div class="col-auto">
+      <input type="text" class="form-control" formControlName="name" style="width: 100%">
+    </div>
+
+    <div class="col-auto">
+      <span error-msg
+            [show]="checkField('name')"
+            [message]="message"
+            [color]="color">
+      </span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <button type="button" class="btn btn-primary mx-2" (click)="changeMessage()">
+        Cambiar texto
+      </button>
+
+      <button type="button" class="btn btn-primary mx-2" (click)="changeColor()">
+        Cambiar color
+      </button>
+    </div>
+  </div>
+
+</form>
+
+<h3 class="mt-5">Formulario</h3>
+<pre><b>Valid:</b> {{ form.valid }}</pre>
+<pre><b>Value:</b> {{ form.value | json }}</pre>
+
+<div *ngIf="!checkField('name')" class="row mt-5">
+  <div class="col">
+    <div class="alert alert-primary">
+      Está todo OK!!!
+    </div>
+  </div>
+</div>
